@@ -20,15 +20,15 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSuccessMessage("Form submitted successfully!");
-    setFormData({ name: "", email: "", message: "" }); 
+    setFormData({ name: "", email: "", message: "" }); // Clear form
   };
 
   return (
     <div style={styles.container}>
-      <h1>Contact Us</h1>
+      <h1 style={styles.title}>Contact Us</h1>
       <form onSubmit={handleSubmit} style={styles.form}>
         <div style={styles.inputGroup}>
-          <label>Name:</label>
+          <label style={styles.label}>Name</label>
           <input
             type="text"
             name="name"
@@ -36,10 +36,11 @@ const App = () => {
             onChange={handleChange}
             required
             style={styles.input}
+            placeholder="Your Name"
           />
         </div>
         <div style={styles.inputGroup}>
-          <label>Email:</label>
+          <label style={styles.label}>Email</label>
           <input
             type="email"
             name="email"
@@ -47,20 +48,22 @@ const App = () => {
             onChange={handleChange}
             required
             style={styles.input}
+            placeholder="you@example.com"
           />
         </div>
         <div style={styles.inputGroup}>
-          <label>Message:</label>
+          <label style={styles.label}>Message</label>
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
             required
             style={styles.textarea}
+            placeholder="Your message"
           />
         </div>
         <button type="submit" style={styles.button}>
-          Submit
+          Send Message
         </button>
       </form>
       {successMessage && <p style={styles.success}>{successMessage}</p>}
@@ -72,45 +75,77 @@ const styles = {
   container: {
     maxWidth: "400px",
     margin: "50px auto",
-    padding: "20px",
-    border: "1px solid #ddd",
+    padding: "30px",
+    backgroundColor: "#ffffff",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
-    backgroundColor: "#f9f9f9",
+    fontFamily: "'Inter', sans-serif",
+  },
+  title: {
+    textAlign: "center",
+    fontSize: "24px",
+    color: "#333",
+    marginBottom: "30px",
+    fontWeight: "600",
   },
   form: {
     display: "flex",
     flexDirection: "column",
   },
   inputGroup: {
-    marginBottom: "15px",
+    marginBottom: "20px",
+  },
+  label: {
+    display: "block",
+    marginBottom: "8px",
+    fontSize: "14px",
+    color: "#666",
   },
   input: {
     width: "100%",
-    padding: "8px",
+    padding: "12px",
     fontSize: "16px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
+    borderRadius: "6px",
+    border: "1px solid #e0e0e0",
+    backgroundColor: "#f9f9f9",
+    outline: "none",
+    transition: "border 0.2s ease",
+  },
+  inputFocus: {
+    border: "1px solid #6c63ff",
   },
   textarea: {
     width: "100%",
-    height: "100px",
-    padding: "8px",
+    height: "120px",
+    padding: "12px",
     fontSize: "16px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
+    borderRadius: "6px",
+    border: "1px solid #e0e0e0",
+    backgroundColor: "#f9f9f9",
+    outline: "none",
+    resize: "none",
+    transition: "border 0.2s ease",
   },
   button: {
-    padding: "10px",
+    padding: "12px 16px",
     fontSize: "16px",
-    backgroundColor: "#4caf50",
+    backgroundColor: "#6c63ff",
     color: "#fff",
     border: "none",
-    borderRadius: "4px",
+    borderRadius: "6px",
     cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    marginTop: "10px",
+  },
+  buttonHover: {
+    backgroundColor: "#5548cc",
   },
   success: {
-    color: "green",
-    marginTop: "15px",
+    color: "#28a745",
+    textAlign: "center",
+    marginTop: "20px",
+    fontSize: "16px",
+    fontWeight: "500",
   },
 };
 
